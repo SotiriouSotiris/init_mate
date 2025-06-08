@@ -4,7 +4,7 @@
   "displayName": "InitMate",
   "description": "Helps you initialize all needed parameters based on the selected method's params",
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.8.0"
   },

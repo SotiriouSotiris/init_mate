@@ -100,18 +100,18 @@ function calculateIndentation(fileText: string, editor: vscode.TextEditor): stri
 	}
 }
 
-function prepareTextToBeInserted(params: string[], match: string, fileText: string, editor: vscode.TextEditor): string {
+function prepareTextToBeInserted(params: string[], match: string, fileText: string, editor: vscode.TextEditor): string | false {
 	const endIndex = fileText.indexOf('end', fileText.indexOf(match) + match.length);
 	if (endIndex === -1) {
 		vscode.window.showErrorMessage('Could not find the end of the method.');
-		return '';
+		return false;
 	}
 	const methodBody = fileText.substring(fileText.indexOf(match) + match.length, endIndex).trim();
 	params = params.filter(param => !methodBody.includes(`@${param}`));
 
 	if (params.length === 0) {
 		vscode.window.showInformationMessage('No new parameters to add.');
-		return '';
+		return false;
 	}
 
 	const paramsText = params.map(param => `${calculateIndentation(fileText, editor)}@${param} = ${param}`).join('\n');
@@ -152,6 +152,7 @@ export function activate(context: vscode.ExtensionContext) {
 		if(!params) { return; }
 
 		const textToBeInserted = prepareTextToBeInserted(params, match, fileText, editor);
+		if(!textToBeInserted) { return; }
 
 		injectText(editor, document, match, textToBeInserted);
 	});
