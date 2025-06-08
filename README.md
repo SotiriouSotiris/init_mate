@@ -59,4 +59,4 @@ Search for InitMate in the Extensions panel in VS Code and install it.
 
 ## License
 
-This extension is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This extension is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.
