@@ -3,8 +3,9 @@
   "publisher": "SotirisSotiriou",
   "displayName": "InitMate",
   "description": "Helps you initialize all needed parameters based on the selected method's params",
+  "icon": "images/init_mate_icon.png",
   "license": "MIT",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.8.0"
   },
